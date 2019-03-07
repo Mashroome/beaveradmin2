@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <title>Beaver Delivery 管理画面 - 配送注文一覧</title>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Beaver Delivery Admin Tool" />
+    <meta name="keywords" content="Beaver Delivery Admin Tool">
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="assets/plugins/animation/css/animate.min.css">
+    <!-- data tables css -->
+    <link rel="stylesheet" href="assets/plugins/data-tables/css/datatables.min.css">
+    <!-- prism css -->
+    <link rel="stylesheet" href="assets/plugins/prism/css/prism.min.css">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/layouts/dark.css">
+    <!-- select2 css -->
+    <link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+    <!-- multi-select css -->
+    <link rel="stylesheet" href="assets/plugins/multi-select/css/multi-select.css">
+
+</head>
+
+<body>
+
+    <!-- [ navigation menu ] start -->
+    <nav class="pcoded-navbar navbar-dark brand-dark">
+        <div class="navbar-wrapper">
+            <div class="navbar-brand header-logo">
+                <a href="index.html" class="b-brand">
+	                <div class="b-bg2">
+                        <img src="assets/images/logo-white.png" class="logo-img3" alt="Logo">
+                    </div>
+                    <span class="b-title"><img src="assets/images/logo-white-text.png" class="logo-img4" alt="Logo"></span>
+                </a>
+                <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+            </div>
+            <div class="navbar-content scroll-div">
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Navigation</label>
+                    </li>
+                    <li data-username="Documentation" class="nav-item"><a href="index.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-bar-chart-2"></i></span><span class="pcoded-mtext">ダッシュボード</span></a></li>
+                    <li data-username="Documentation" class="nav-item active"><a href="orders.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-layers"></i></span><span class="pcoded-mtext">配送注文</span></a></li>
+                    <li data-username="Documentation" class="nav-item"><a href="stores.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">加盟店舗</span></a></li>
+                    <li data-username="Documentation" class="nav-item"><a href="products.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">登録商品</span></a></li>
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Support</label>
+                    </li>
+                    <li data-username="Documentation" class="nav-item"><a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">運用マニュアル</span></a></li>
+                    <li data-username="Need Support" class="nav-item"><a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-help-circle"></i></span><span class="pcoded-mtext">サポート</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- [ navigation menu ] end -->
+
+    <!-- [ Header ] start -->
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light">
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse1" href="#!"><span></span></a>
+            <a href="index.html" class="b-brand">
+                   <img src="assets/images/logo-white.png" class="logo-img3" alt="Logo">
+                   <span class="b-title"><img src="assets/images/logo-white-text.png" class="logo-img4" alt="Logo"></span>
+               </a>
+        </div>
+        <a class="mobile-menu" id="mobile-header" href="#!">
+            <i class="feather icon-more-horizontal"></i>
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li><a href="#!" class="full-screen" onclick="javascript:toggleFullScreen()"><i class="feather icon-maximize"></i></a></li>
+                <li class="nav-item">
+                    <div class="row align-items-center">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="orders.html">配送注文</a></li>
+                            </ul>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <div class="dropdown drp-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon feather icon-settings"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+                            <div class="pro-head">
+                                <img src="assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
+                                <span>塩見 小古奈</span>
+                                <a href="auth-signin.html" class="dud-logout" title="Logout">
+                                    <i class="feather icon-log-out"></i>
+                                </a>
+                            </div>
+                            <ul class="pro-body">
+                                <li><a href="user_setting.html" class="dropdown-item"><i class="feather icon-settings"></i> 設定</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!-- [ Header ] end -->
+
+    <!-- [ Main Content ] start -->
+    <section class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- [ Main Content ] start -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card select-card">
+                                        <div class="card-header">
+                                            <h5>配送注文一覧</h5>
+                                            <div class="card-header-right">
+                                                <div class="btn-group mb-2 mt-0 mr-3" role="group" aria-label="Basic example">
+                                                    <button type="button" class="btn btn-secondary">Excel</button>
+                                                    <button type="button" class="btn btn-secondary">CSV</button>
+                                                    <button type="button" class="btn btn-secondary">PDF</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-block table-border-style">
+                                            <div class="row">
+                                                <div class="col-xl-6 col-md-6">
+                                                    <p>発送元店舗</p>
+                                                    <select class="js-example-basic-multiple col-sm-12" multiple="multiple">
+                                                        <option value="">能作 本社FACTORY SHOP</option>
+                                                        <option value="">能作 パレスホテル東京店</option>
+                                                        <option value="">能作 日本橋三越店</option>
+                                                        <option value="">能作 松屋銀座店</option>
+                                                        <option value="">能作 ジェイアール名古屋タカシマヤ</option>
+                                                        <option value="">能作 阪急うめだ店</option>
+                                                        <option value="">能作 大丸神戸店</option>
+                                                        <option value="">能作 福岡三越店</option>
+                                                        <option value="">能作 博多阪急店</option>
+                                                        <option value="">能作 マリエとやま店</option>
+                                                        <option value="">能作 富山大和店</option>
+                                                        <option value="">箔一 本店・箔巧館</option>
+                                                        <option value="">箔一 香林坊アトリオ店</option>
+                                                        <option value="">箔一 めいてつ・エムザ店</option>
+                                                        <option value="">箔一 氷見店</option>
+                                                        <option value="">箔一 阪急うめだ店</option>
+                                                        <option value="">箔一 金澤東山しつらえ</option>
+                                                        <option value="">箔一 はくいちカフェ箔巧館</option>
+                                                        <option value="">箔一 東山店</option>
+                                                        <option value="">箔一 金沢駅百番街店</option>
+                                                        <option value="">箔一 兼六園店</option>
+                                                        <option value="">箔一 銀座ショールーム</option>
+                                                        <option value="">箔一 かなざわ美かざり あさの</option>
+                                                        <option value="">箔一 はくいちカフェアトリオ店</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-xl-3 col-md-6 mb-5">
+                                                    <p>年</p>
+                                                    <select class="js-example-placeholder-multiple col-sm-12">
+                                                        <option value="2019">2019</option>
+                                                        <option value="2018">2018</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-xl-3 col-md-6 mb-5">
+                                                    <p>月</p>
+                                                    <select class="js-example-basic-multiple col-sm-12" multiple="multiple">
+                                                        <option value="">1月</option>
+                                                        <option value="">2月</option>
+                                                        <option value="">3月</option>
+                                                        <option value="">4月</option>
+                                                        <option value="">5月</option>
+                                                        <option value="">6月</option>
+                                                        <option value="">7月</option>
+                                                        <option value="">8月</option>
+                                                        <option value="">9月</option>
+                                                        <option value="">10月</option>
+                                                        <option value="">11月</option>
+                                                        <option value="">12月</option>
+                                                    </select>
+                                                </div>
+
+                                                
+                                            </div>
+
+                                            <div class="table-responsive">
+                                                <table id="responsive-table-model" class="display table dt-responsive nowrap table-hover" style="width:100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>注文ID</th>
+                                                            <th>受付日時</th>
+                                                            <th>ユーザー</th>
+                                                            <th>ステータス</th>
+                                                            <th>企業名</th>
+                                                            <th>店舗名</th>
+                                                            <th>合計金額</th>
+                                                            <th>追跡番号</th>
+                                                            <th>伝票</th>
+                                                            <th>詳細</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>BD01011356-001</td>
+                                                            <td>2019/01/01 13:56</td>
+                                                            <td>Kate Bush</td>
+                                                            <td><a class="text-white label theme-bg f-12">配送中</a></td>
+                                                            <td>株式会社能作</td>
+                                                            <td>パレスホテル東京店</td>
+                                                            <td>¥5,860</td>
+                                                            <td>20191234567</td>
+                                                            <td><a href="#!" class="displayChatbox"><i class="icon feather icon-file-text"></td>
+                                                            <td><a href="orders_detail.html" class="displayChatbox"><i class="icon feather icon-maximize-2"></i></a></td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td>BD01011356-001</td>
+                                                            <td>2019/01/01 13:56</td>
+                                                            <td>Harrison Ford</td>
+                                                            <td><a class="text-white label theme-bg2 f-12">未集荷</a></td>
+                                                            <td>株式会社能作</td>
+                                                            <td>本社FACTORY SHOP</td>
+                                                            <td>¥5,860</td>
+                                                            <td>20191234567</td>
+                                                            <td><a href="#!" class="displayChatbox"><i class="icon feather icon-file-text"></td>
+                                                            <td><a href="orders_detail.html" class="displayChatbox"><i class="icon feather icon-maximize-2"></i></a></td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td>BD01011356-001</td>
+                                                            <td>2019/01/01 13:56</td>
+                                                            <td>Elon Musk</td>
+                                                            <td><a class="text-white label bg-c-red f-12">配達済</a></td>
+                                                            <td>株式会社能作</td>
+                                                            <td>日本橋三越店</td>
+                                                            <td>¥5,860</td>
+                                                            <td>20191234567</td>
+                                                            <td><a href="#!" class="displayChatbox"><i class="icon feather icon-file-text"></td>
+                                                            <td><a href="orders_detail.html" class="displayChatbox"><i class="icon feather icon-maximize-2"></i></a></td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td>BD01011356-001</td>
+                                                            <td>2019/01/01 13:56</td>
+                                                            <td>Jeniffer Ropez</td>
+                                                            <td><a class="text-white label bg-c-red f-12">配達済</a></td>
+                                                            <td>株式会社能作</td>
+                                                            <td>松屋銀座店</td>
+                                                            <td>¥5,860</td>
+                                                            <td>20191234567</td>
+                                                            <td><a href="#!" class="displayChatbox"><i class="icon feather icon-file-text"></td>
+                                                            <td><a href="orders_detail.html" class="displayChatbox"><i class="icon feather icon-maximize-2"></i></a></td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td>BD01011356-001</td>
+                                                            <td>2019/01/01 13:56</td>
+                                                            <td>Meg Ryan</td>
+                                                            <td><a class="text-white label bg-c-red f-12">配達済</a></td>
+                                                            <td>株式会社能作</td>
+                                                            <td>ジェイアール名古屋タカシマヤ</td>
+                                                            <td>¥5,860</td>
+                                                            <td>20191234567</td>
+                                                            <td><a href="#!" class="displayChatbox"><i class="icon feather icon-file-text"></td>
+                                                            <td><a href="orders_detail.html" class="displayChatbox"><i class="icon feather icon-maximize-2"></i></a></td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td>BD01011356-001</td>
+                                                            <td>2019/01/01 13:56</td>
+                                                            <td>Harry Winston</td>
+                                                            <td><a class="text-white label bg-c-red f-12">配達済</a></td>
+                                                            <td>株式会社能作</td>
+                                                            <td>阪急うめだ店</td>
+                                                            <td>¥5,860</td>
+                                                            <td>20191234567</td>
+                                                            <td><a href="#!" class="displayChatbox"><i class="icon feather icon-file-text"></td>
+                                                            <td><a href="orders_detail.html" class="displayChatbox"><i class="icon feather icon-maximize-2"></i></a></td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td>BD01011356-001</td>
+                                                            <td>2019/01/01 13:56</td>
+                                                            <td>Coco Channel</td>
+                                                            <td><a class="text-white label bg-c-red f-12">配達済</a></td>
+                                                            <td>株式会社能作</td>
+                                                            <td>大丸神戸店</td>
+                                                            <td>¥5,860</td>
+                                                            <td>20191234567</td>
+                                                            <td><a href="#!" class="displayChatbox"><i class="icon feather icon-file-text"></td>
+                                                            <td><a href="orders_detail.html" class="displayChatbox"><i class="icon feather icon-maximize-2"></i></a></td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td>BD01011356-001</td>
+                                                            <td>2019/01/01 13:56</td>
+                                                            <td>Nicola Tesla</td>
+                                                            <td><a class="text-white label bg-c-red f-12">配達済</a></td>
+                                                            <td>株式会社能作</td>
+                                                            <td>福岡三越店</td>
+                                                            <td>¥5,860</td>
+                                                            <td>20191234567</td>
+                                                            <td><a href="#!" class="displayChatbox"><i class="icon feather icon-file-text"></td>
+                                                            <td><a href="orders_detail.html" class="displayChatbox"><i class="icon feather icon-maximize-2"></i></a></td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td>BD01011356-001</td>
+                                                            <td>2019/01/01 13:56</td>
+                                                            <td>Julia Roberts</td>
+                                                            <td><a class="text-white label bg-c-red f-12">配達済</a></td>
+                                                            <td>株式会社能作</td>
+                                                            <td>博多阪急店</td>
+                                                            <td>¥5,860</td>
+                                                            <td>20191234567</td>
+                                                            <td><a href="#!" class="displayChatbox"><i class="icon feather icon-file-text"></td>
+                                                            <td><a href="orders_detail.html" class="displayChatbox"><i class="icon feather icon-maximize-2"></i></a></td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td>BD01011356-001</td>
+                                                            <td>2019/01/01 13:56</td>
+                                                            <td>Donald Mcdonald</td>
+                                                            <td><a class="text-white label bg-c-red f-12">配達済</a></td>
+                                                            <td>株式会社能作</td>
+                                                            <td>マリエとやま店</td>
+                                                            <td>¥5,860</td>
+                                                            <td>20191234567</td>
+                                                            <td><a href="#!" class="displayChatbox"><i class="icon feather icon-file-text"></td>
+                                                            <td><a href="orders_detail.html" class="displayChatbox"><i class="icon feather icon-maximize-2"></i></a></td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td>BD01011356-001</td>
+                                                            <td>2019/01/01 13:56</td>
+                                                            <td>Winnie Poo</td>
+                                                            <td><a class="text-white label bg-c-red f-12">配達済</a></td>
+                                                            <td>株式会社能作</td>
+                                                            <td>富山大和店</td>
+                                                            <td>¥5,860</td>
+                                                            <td>20191234567</td>
+                                                            <td><a href="#!" class="displayChatbox"><i class="icon feather icon-file-text"></td>
+                                                            <td><a href="orders_detail.html" class="displayChatbox"><i class="icon feather icon-maximize-2"></i></a></td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td>BD01011356-001</td>
+                                                            <td>2019/01/01 13:56</td>
+                                                            <td>Mick Mouse</td>
+                                                            <td><a class="text-white label bg-c-red f-12">配達済</a></td>
+                                                            <td>株式会社箔一</td>
+                                                            <td>本店・箔巧館</td>
+                                                            <td>¥5,860</td>
+                                                            <td>20191234567</td>
+                                                            <td><a href="#!" class="displayChatbox"><i class="icon feather icon-file-text"></td>
+                                                            <td><a href="orders_detail.html" class="displayChatbox"><i class="icon feather icon-maximize-2"></i></a></td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td>BD01011356-001</td>
+                                                            <td>2019/01/01 13:56</td>
+                                                            <td>Minny Mousy</td>
+                                                            <td><a class="text-white label bg-c-red f-12">配達済</a></td>
+                                                            <td>株式会社箔一</td>
+                                                            <td>香林坊アトリオ店</td>
+                                                            <td>¥5,860</td>
+                                                            <td>20191234567</td>
+                                                            <td><a href="#!" class="displayChatbox"><i class="icon feather icon-file-text"></td>
+                                                            <td><a href="orders_detail.html" class="displayChatbox"><i class="icon feather icon-maximize-2"></i></a></td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td>BD01011356-001</td>
+                                                            <td>2019/01/01 13:56</td>
+                                                            <td>Donald Ducky</td>
+                                                            <td><a class="text-white label bg-c-red f-12">配達済</a></td>
+                                                            <td>株式会社箔一</td>
+                                                            <td>めいてつ・エムザ店</td>
+                                                            <td>¥5,860</td>
+                                                            <td>20191234567</td>
+                                                            <td><a href="#!" class="displayChatbox"><i class="icon feather icon-file-text"></td>
+                                                            <td><a href="orders_detail.html" class="displayChatbox"><i class="icon feather icon-maximize-2"></i></a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- [ Select2 ] end -->
+                            </div>
+                            <!-- [ Main Content ] end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- [ Main Content ] end -->
+
+    <!-- Warning Section start -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 11]>
+        <div class="ie-warning">
+            <h1>Warning!!</h1>
+            <p>You are using an outdated version of Internet Explorer, please upgrade
+               <br/>to any of the following web browsers to access this website.
+            </p>
+            <div class="iew-container">
+                <ul class="iew-download">
+                    <li>
+                        <a href="http://www.google.com/chrome/">
+                            <img src="assets/images/browser/chrome.png" alt="Chrome">
+                                    <div>Chrome</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.mozilla.org/en-US/firefox/new/">
+                            <img src="assets/images/browser/firefox.png" alt="Firefox">
+                            <div>Firefox</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.opera.com">
+                            <img src="assets/images/browser/opera.png" alt="Opera">
+                            <div>Opera</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.apple.com/safari/">
+                            <img src="assets/images/browser/safari.png" alt="Safari">
+                            <div>Safari</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                            <img src="assets/images/browser/ie.png" alt="">
+                            <div>IE (11 & above)</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <p>Sorry for the inconvenience!</p>
+        </div>
+    <![endif]-->
+    <!-- Warning Section Ends -->
+
+    <!-- Required Js -->
+    <script src="assets/js/vendor-all.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/pcoded.min.js"></script>
+    
+
+    <!-- datatable Js -->
+    <script src="assets/plugins/data-tables/js/datatables.min.js"></script>
+    <script src="assets/js/pages/tbl-datatable-custom.js"></script>
+
+    <!-- select2 Js -->
+    <script src="assets/plugins/select2/js/select2.full.min.js"></script>
+
+    <!-- multi-select Js -->
+    <script src="assets/plugins/multi-select/js/jquery.quicksearch.js"></script>
+    <script src="assets/plugins/multi-select/js/jquery.multi-select.js"></script>
+
+    <!-- form-select-custom Js -->
+    <script src="assets/js/pages/form-select-custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <title>Beaver Delivery 管理画面 - 新規店舗登録</title>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Beaver Delivery Admin Tool" />
+    <meta name="keywords" content="Beaver Delivery Admin Tool">
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="assets/plugins/animation/css/animate.min.css">
+    <!-- data tables css -->
+    <link rel="stylesheet" href="assets/plugins/data-tables/css/datatables.min.css">
+    <!-- prism css -->
+    <link rel="stylesheet" href="assets/plugins/prism/css/prism.min.css">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/layouts/dark.css">
+    <!-- select2 css -->
+    <link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+    <!-- multi-select css -->
+    <link rel="stylesheet" href="assets/plugins/multi-select/css/multi-select.css">
+    <!-- fileupload-custom css -->
+    <link rel="stylesheet" href="assets/css/pages/fileupload.css">
+
+</head>
+
+<body>
+
+    <!-- [ navigation menu ] start -->
+    <nav class="pcoded-navbar navbar-dark brand-dark">
+        <div class="navbar-wrapper">
+            <div class="navbar-brand header-logo">
+                <a href="index.html" class="b-brand">
+	                <div class="b-bg2">
+                        <img src="assets/images/logo-white.png" class="logo-img3" alt="Logo">
+                    </div>
+                    <span class="b-title"><img src="assets/images/logo-white-text.png" class="logo-img4" alt="Logo"></span>
+                </a>
+                <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+            </div>
+            <div class="navbar-content scroll-div">
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Navigation</label>
+                    </li>
+                    <li data-username="Documentation" class="nav-item"><a href="index.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-bar-chart-2"></i></span><span class="pcoded-mtext">ダッシュボード</span></a></li>
+                    <li data-username="Documentation" class="nav-item"><a href="orders.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-layers"></i></span><span class="pcoded-mtext">配送注文</span></a></li>
+                    <li data-username="Documentation" class="nav-item active"><a href="stores.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">加盟店舗</span></a></li>
+                    <li data-username="Documentation" class="nav-item"><a href="products.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">登録商品</span></a></li>
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Support</label>
+                    </li>
+                    <li data-username="Documentation" class="nav-item"><a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">運用マニュアル</span></a></li>
+                    <li data-username="Need Support" class="nav-item"><a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-help-circle"></i></span><span class="pcoded-mtext">サポート</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- [ navigation menu ] end -->
+
+    <!-- [ Header ] start -->
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light">
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse1" href="#!"><span></span></a>
+            <a href="index.html" class="b-brand">
+                   <img src="assets/images/logo-white.png" class="logo-img3" alt="Logo">
+                   <span class="b-title"><img src="assets/images/logo-white-text.png" class="logo-img4" alt="Logo"></span>
+               </a>
+        </div>
+        <a class="mobile-menu" id="mobile-header" href="#!">
+            <i class="feather icon-more-horizontal"></i>
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li><a href="#!" class="full-screen" onclick="javascript:toggleFullScreen()"><i class="feather icon-maximize"></i></a></li>
+                <li class="nav-item">
+                    <div class="row align-items-center">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="stores.html">加盟店舗</a></li>
+                                <li class="breadcrumb-item"><a href="stores_edit.html">新規店舗登録</a></li>
+                            </ul>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <div class="dropdown drp-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon feather icon-settings"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+                            <div class="pro-head">
+                                <img src="assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
+                                <span>塩見 小古奈</span>
+                                <a href="auth-signin.html" class="dud-logout" title="Logout">
+                                    <i class="feather icon-log-out"></i>
+                                </a>
+                            </div>
+                            <ul class="pro-body">
+                                <li><a href="user_setting.html" class="dropdown-item"><i class="feather icon-settings"></i> 設定</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!-- [ Header ] end -->
+
+    <!-- [ Main Content ] start -->
+    <section class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- [ Main Content ] start -->
+                            <div class="row">
+                                <!-- [ Responsive table ] start -->
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>新規店舗登録</h5>
+                                            <div class="card-header-right">
+                                                <button type="button" class="btn btn-warning sweet-success"><i class="feather icon-plus"></i>新規登録保存</button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <form>
+                                                        <div class="form-group row">
+                                                            <label for="storeid" class="col-sm-3 col-form-label">店舗ID</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" id="storeid" placeholder="" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="companyname" class="col-sm-3 col-form-label">企業名</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" id="companyname" placeholder="" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="companyname" class="col-sm-3 col-form-label">企業名 (英語表記)</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" id="companyname" placeholder="" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="storename" class="col-sm-3 col-form-label">店舗名</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" id="storename" placeholder="" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="storename" class="col-sm-3 col-form-label">店舗名 (英語表記)</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" id="storename" placeholder="" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="storename" class="col-sm-3 col-form-label">国名</label>
+                                                            <div class="col-sm-9">
+                                                                <select class="form-control" id="exampleFormControlSelect1">
+                                                                    <option>日本</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="tel" class="col-sm-3 col-form-label">電話番号</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" id="tel" placeholder="" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="email" class="col-sm-3 col-form-label">メールアドレス</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="email" class="form-control" id="email" placeholder="" value="">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <form>
+                                                        <div class="form-group row">
+                                                            <label for="stuffname" class="col-sm-3 col-form-label">担当者名</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" id="stuffname" placeholder="" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="prefecture" class="col-sm-3 col-form-label">都道府県</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" id="prefecture" placeholder="" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="city" class="col-sm-3 col-form-label">市区町村</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" id="city" placeholder="" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="address" class="col-sm-3 col-form-label">丁番地以下</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" id="address" placeholder="" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="building" class="col-sm-3 col-form-label">建物名等</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" id="building" placeholder="" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="productcategory" class="col-sm-3 col-form-label">主要品目</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" id="productcategory" placeholder="" value="">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                            
+                                            <div class="row">
+
+                                                <div class="col-xl-3 col-md-6 mt-3">
+                                                    <p>設定中企業/店舗ロゴ</p>
+                                                    <img class="card-img-top" src="assets/images/gallery-grid/masonry-6.jpg" alt="Card image">
+                                                </div>
+                                                <div class="col-xl-3 col-md-6 mt-3">
+                                                    <p>企業/店舗ロゴ変更</p>
+                                                    <form action="assets/plugins/fileupload/js/file-upload.php" class="dropzone">
+                                                        <div class="fallback">
+                                                            <input name="file" type="file" multiple />
+                                                        </div>
+                                                    </form>
+                                                    <div class="text-center m-t-20">
+                                                        <button class="btn btn-outline-primary">アップロード</button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-md-6 mt-3">
+                                                    <p>設定中店舗画像</p>
+                                                    <img class="card-img-top" src="assets/images/gallery-grid/masonry-3.jpg" alt="Card image">
+                                                </div>
+                                                <div class="col-xl-3 col-md-6 mt-3">
+                                                    <p>店舗画像変更</p>
+                                                    <form action="assets/plugins/fileupload/js/file-upload.php" class="dropzone">
+                                                        <div class="fallback">
+                                                            <input name="file" type="file" multiple />
+                                                        </div>
+                                                    </form>
+                                                    <div class="text-center m-t-20">
+                                                        <button class="btn btn-outline-primary">アップロード</button>
+                                                    </div>
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- [ Responsive table ] end -->
+                            </div>
+                            <!-- [ Main Content ] end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- [ Main Content ] end -->
+
+    <!-- Warning Section start -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 11]>
+        <div class="ie-warning">
+            <h1>Warning!!</h1>
+            <p>You are using an outdated version of Internet Explorer, please upgrade
+               <br/>to any of the following web browsers to access this website.
+            </p>
+            <div class="iew-container">
+                <ul class="iew-download">
+                    <li>
+                        <a href="http://www.google.com/chrome/">
+                            <img src="assets/images/browser/chrome.png" alt="Chrome">
+                                    <div>Chrome</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.mozilla.org/en-US/firefox/new/">
+                            <img src="assets/images/browser/firefox.png" alt="Firefox">
+                            <div>Firefox</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.opera.com">
+                            <img src="assets/images/browser/opera.png" alt="Opera">
+                            <div>Opera</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.apple.com/safari/">
+                            <img src="assets/images/browser/safari.png" alt="Safari">
+                            <div>Safari</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                            <img src="assets/images/browser/ie.png" alt="">
+                            <div>IE (11 & above)</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <p>Sorry for the inconvenience!</p>
+        </div>
+    <![endif]-->
+    <!-- Warning Section Ends -->
+
+    <!-- Required Js -->
+    <script src="assets/js/vendor-all.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/pcoded.min.js"></script>
+    
+    <!-- select2 Js -->
+    <script src="assets/plugins/select2/js/select2.full.min.js"></script>
+
+    <!-- multi-select Js -->
+    <script src="assets/plugins/multi-select/js/jquery.quicksearch.js"></script>
+    <script src="assets/plugins/multi-select/js/jquery.multi-select.js"></script>
+
+    <!-- form-select-custom Js -->
+    <script src="assets/js/pages/form-select-custom.js"></script>
+
+    <!-- file-upload Js -->
+    <script src="assets/plugins/fileupload/js/dropzone-amd-module.min.js"></script>
+
+    <!-- sweet alert Js -->
+    <script src="assets/plugins/sweetalert/js/sweetalert.min.js"></script>
+    <script src="assets/js/pages/ac-alert.js"></script>
+
+</body>
+</html>
